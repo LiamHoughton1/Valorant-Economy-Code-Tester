@@ -57,16 +57,45 @@ harbourabilitycove = 350
 
 def jett():      
        global abilitycredcost
-       whatability = int(input("Choose First Ability: 1.Cloudburst 2.Updraft 3.None "))
+       global whatability
+       try:
+              whatability = int(input("Choose First Ability: 1.Cloudburst 2.Updraft 3.None "))
+              if whatability < 1 or whatability > 3:
+                     print("Please choose a valid whole number in the range 1-4")
+                     print()
+                     jett()
+       except ValueError:
+              print("That is an invalid input, please try again")
+              print()
+              jett()
+
+
        if whatability == 1:
-              howmany = int(input("How Many? "))
+              try:
+                     howmany = int(input("How Many? "))
+                     if howmany < 1 or howmany > 2:
+                            print("Please choose a valid whole number in the range 1-3")
+                            print()
+                            jett()
+              except ValueError:
+                     print("That is an invalid input, please try again")
+                     print()
+                     jett()
               if howmany == 1:
                      abilitycredcost = int(abilitycredcost) + int(jettabilitycloudburst)
               if howmany == 2:
                      abilitycredcost = int(abilitycredcost) + int(jettabilitycloudburst) + int(jettabilitycloudburst)
-                     print(abilitycredcost)
        if whatability == 2:
-              howmany = int(input("How Many? "))
+              try:
+                     howmany = int(input("How Many? "))
+                     if howmany < 1 or howmany > 2:
+                            print("Please choose a valid whole number in the range 1-3")
+                            print()
+                            jett()
+              except ValueError:
+                     print("That is an invalid input, please try again")
+                     print()
+                     jett()
               if howmany == 1:
                      abilitycredcost = int(abilitycredcost) + int(jettabilityupdraft)
               if howmany == 2:
@@ -75,13 +104,31 @@ def jett():
 
        whatability = int(input('Choose Second Ability: 1.Cloudburst 2.Updraft 3.None '))
        if whatability == 1:
-              howmany = int(input("How Many? "))
+              try:
+                     howmany = int(input("How Many? "))
+                     if howmany < 1 or howmany > 2:
+                            print("Please choose a valid whole number in the range 1-3")
+                            print()
+                            jett()
+              except ValueError:
+                     print("That is an invalid input, please try again")
+                     print()
+                     jett()
               if howmany == 1:
                      abilitycredcost = int(abilitycredcost) + int(jettabilitycloudburst)
               if howmany == 2:
                      abilitycredcost = int(abilitycredcost) + int(jettabilitycloudburst) + int(jettabilitycloudburst)
        if whatability == 2:
-              howmany = int(input("How Many? "))
+              try:
+                     howmany = int(input("How Many? "))
+                     if howmany < 1 or howmany > 2:
+                            print("Please choose a valid whole number in the range 1-3")
+                            print()
+                            jett()
+              except ValueError:
+                     print("That is an invalid input, please try again")
+                     print()
+                     jett()
               if howmany == 1:
                      abilitycredcost = int(abilitycredcost) + int(jettabilityupdraft)
               if howmany == 2:
@@ -103,20 +150,33 @@ def whatgun():
 
 def shields():
        global shieldcost
-       shield = int(input("What Shields? 1.Heavy 2.Light 3.None "))
+       try:
+              shield = int(input("What Shields? 1.Heavy 2.Light 3.None "))
+              if shield < 1 or shield > 3:
+                     print("Please choose a valid whole number in the range 1-4")
+                     print()
+                     shields()
+       except ValueError:
+              print("That is an invalid input, please try again")
+              print()
+              shields()
+       
        if shield == 1:
               shieldcost = 1000
        if shield == 2:
               shieldcost = 400
 
+def agentselect():
+       agent = input("Choose an agent: ")
+       if agent == "jett" or agent == "Jett":
+              jett()
+       else:
+              print("Please Choose A Valid Valorant Agent")
+              agentselect()
 
 
 creds = int(input("How many credits do you have? "))
-agent = input("Choose an agent: ")
-
-if agent == "jett":
-       jett()
-
+agentselect()
 whatgun()
 shields()
 
