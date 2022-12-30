@@ -4,9 +4,13 @@ startcost = 0
 agent = 0
 whatability = 0
 howmany = 0
-jett = 0
 gun = 0
 guncost = 0
+shield = 0
+shieldcost = 0
+totalcost = 0
+missingcreds = 0
+sparecreds = 0
 jettabilitycloudburst = 200
 jettabilityupdraft = 150
 brimabilitystimbeacon = 200
@@ -85,7 +89,7 @@ def jett():
        #add a whatability for 3 and have it link to the next 
 
 
-def gun():
+def whatgun():
        global guncost
        gun = input("What Gun Are You Buying? ")
        if gun == "classic" or "Classic":
@@ -97,18 +101,46 @@ def gun():
        if gun == "ghost" or "Ghost":
               guncost = 500
 
+def shields():
+       global shieldcost
+       shield = int(input("What Shields? 1.Heavy 2.Light 3.None "))
+       if shield == 1:
+              shieldcost = 1000
+       if shield == 2:
+              shieldcost = 400
+
 
 
 creds = int(input("How many credits do you have? "))
-agent = input("Choose an agent ")
+agent = input("Choose an agent: ")
 
 if agent == "jett":
        jett()
 
-gun()
+whatgun()
+shields()
+
+totalcost = abilitycredcost + guncost + shieldcost
+print()
+print("You Currently Have {} Credits".format(creds))
+print("The Total cost of This Loadout is: {} Credits".format(totalcost))
+
+if totalcost > creds:
+       missingcreds = totalcost - creds
+       print()
+       print("You Do Not Have Enough To Afford This Loadout")
+       print("You Are Missing {} Credits".format(missingcreds))
+if totalcost < creds:
+       sparecreds = creds - totalcost
+       print()
+       print("You Have Enough To Afford This Loadout")
+       print("You Will Have {} Credits Left Over".format(sparecreds))
+
+
+print()
 print(abilitycredcost)
 print(guncost)
-
+print(shieldcost)
 #maybe this will work
 
 
