@@ -92,7 +92,10 @@ def gun():
               guncost = 0
        if gun == "shorty" or "Shorty":
               guncost = 150
-
+       if gun == "frenzy" or "Frenzy":
+              guncost = 450
+       if gun == "ghost" or "Ghost":
+              guncost = 500
 
 
 
